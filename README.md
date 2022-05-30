@@ -10,8 +10,8 @@
 Naam: Bart Hogenes
 Studentnummer 500694053
 
-Dit open-source project (origineel) heb ik gebruikt voor het vak Testing om aan te tonen dat ik de vereiste JUnit testtechnieken kan toepassen uit het boek "Pragmatic Unit Testing in Java 8 with JUnit" van Langr, Hunt en Thomas. 
-Zoals te zien is aan de badge boven deze tekst voldoet dit project aan de minimale 1000 regels code.
+Dit open-source project (origineel is [hier](https://github.com/tsaglam/Carcassonne) te vinden) heb ik gebruikt voor het vak Testing om aan te tonen dat ik de vereiste JUnit testtechnieken kan toepassen uit het boek "Pragmatic Unit Testing in Java 8 with JUnit" van Langr, Hunt en Thomas.  
+Aan de badge boven deze tekst is te zien dat dit project voldoet aan de minimale 1000 regels code.  
 Ook is in de onderstaande screenshot te zien dat de twee geteste classes (`TileStack` en `Round`) beide voor 100% getest zijn op zowel method, line als branch niveau:
 ![Run all with coverage result](coverage.png)
 
