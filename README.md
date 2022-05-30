@@ -32,8 +32,8 @@ De volgende 5 verschillende Hamcrest matchers zijn gebruikt in `EmptyTileDistrib
 - not
 - describedAs
 
-De vereiste `Invariant` wordt getest in de `tearDown` van de `EmptyTileDistributionTest` behaald.  
-Er wordt ook getest op `forced errors` in iedere testklasse.
+De vereiste `Invariant test` is te vinden in de `tearDown` van de `EmptyTileDistributionTest`.  
+Er wordt ook getest op `forced errors` voor zover ik die heb kunnen vinden.
 
 ### Over dit project
 Dit is een licht aangepaste, digitale versie van het bordspel Carcassonne. <br>
