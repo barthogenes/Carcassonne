@@ -8,6 +8,8 @@ import java.awt.Transparency;
 import java.awt.image.BaseMultiResolutionImage;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Objects;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -145,8 +147,8 @@ public enum ImageLoadingUtil {
             return ImageIO.read(PaintShop.class.getClassLoader().getResourceAsStream(path));
         } catch (IOException exception) {
             exception.printStackTrace();
-            GameMessage.showError("ERROR: Could not load image loacted at " + path);
-            return null;
+            GameMessage.showError("ERROR: Could not load image located at " + path + ". Will use a black placeholder image instead.");
+            return new BufferedImage(100, 100, BufferedImage.TYPE_INT_RGB);
         }
     }
 }
