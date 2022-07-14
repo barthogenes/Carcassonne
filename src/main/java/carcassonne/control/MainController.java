@@ -136,7 +136,11 @@ public class MainController implements ControllerFacade {
                 settings.registerNotifiable(meepleView);
                 settings.registerNotifiable(tileView);
             });
-        } catch (InvocationTargetException | InterruptedException exception) {
+        } catch (InvocationTargetException exception) {
+            exception.printStackTrace();
+            GameMessage.showError("Could not create user interface: " + exception.getCause().getMessage());
+        } catch (InterruptedException exception) {
+            Thread.currentThread().interrupt();
             exception.printStackTrace();
             GameMessage.showError("Could not create user interface: " + exception.getCause().getMessage());
         }
