@@ -1,9 +1,6 @@
 package carcassonne.model.tile;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Encapsulates a {@link TileType} distribution for a {@link TileStack}. Does not contain any tiles.
@@ -74,7 +71,7 @@ public class TileDistribution {
      */
     public void shuffle() {
         TileType.enabledTiles().forEach(it -> distribution.putIfAbsent(it, it.getAmount()));
-        Stack<Integer> tileAmounts = new Stack<>();
+        LinkedList<Integer> tileAmounts = new LinkedList<>();
         tileAmounts.addAll(distribution.values());
         Collections.shuffle(tileAmounts);
         TileType.enabledTiles().forEach(it -> distribution.put(it, getPseudoRandomAmount(it, tileAmounts)));
@@ -83,7 +80,7 @@ public class TileDistribution {
     /**
      * Chooses a pseudo-random amount from a stack of amounts for a certain tile type.
      */
-    private int getPseudoRandomAmount(TileType tileType, Stack<Integer> randomAmounts) {
+    private int getPseudoRandomAmount(TileType tileType, LinkedList<Integer> randomAmounts) {
         int amount = randomAmounts.peek();
         int attempts = 0;
         while (amount == tileType.getAmount() && attempts < MAXIMAL_ATTEMPTS) {
