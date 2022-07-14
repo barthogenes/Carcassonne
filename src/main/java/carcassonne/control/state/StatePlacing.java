@@ -128,6 +128,7 @@ public class StatePlacing extends AbstractGameState {
             try {
                 Thread.sleep(SLEEP_DURATION);
             } catch (InterruptedException exception) {
+                Thread.currentThread().interrupt();
                 exception.printStackTrace();
                 GameMessage.showError(exception.getCause().getMessage());
             }
