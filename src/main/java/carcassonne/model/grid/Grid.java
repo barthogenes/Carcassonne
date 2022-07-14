@@ -155,7 +155,7 @@ public class Grid {
      * @param settings are the game settings.
      * @return the collection of all moves.
      */
-    public Collection<? extends AbstractCarcassonneMove> getPossibleMoves(Tile tile, Player player, GameSettings settings) {
+    public Collection<ZeroSumMove> getPossibleMoves(Tile tile, Player player, GameSettings settings) {
         checkParameters(tile);
         List<ZeroSumMove> possibleMoves = new ArrayList<>();
         for (TileRotation rotation : tile.getPossibleRotations()) {
