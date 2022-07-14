@@ -92,6 +92,7 @@ public final class ConcurrentTileImageScaler {
             }
             return getOriginalImageUnsafe(tile);
         } catch (InterruptedException exception) {
+            Thread.currentThread().interrupt();
             exception.printStackTrace();
         } finally {
             if (targetSize != TILE_RESOLUTION) {
