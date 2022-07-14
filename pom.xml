@@ -15,7 +15,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>11</maven.compiler.release>
     <sonar.projectKey>Carcasonne</sonar.projectKey>
-    <sonar.login>sqp_0e7bb7cf2b6bcf60570e23b35d1c7b2c0ac5423e</sonar.login>
+    <sonar.login>sqp_f6d8e2b2663b2bfdd362f0de672d34efd340808e</sonar.login>
     <sonar.host.url>http://localhost:9000</sonar.host.url>
   </properties>
 

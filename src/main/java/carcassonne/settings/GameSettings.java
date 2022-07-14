@@ -2,6 +2,13 @@ package carcassonne.settings;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.beans.ExceptionListener;
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -15,6 +22,7 @@ import carcassonne.model.tile.TileDistribution;
 import carcassonne.util.MinkowskiDistance;
 import carcassonne.view.NotifiableView;
 import carcassonne.view.PaintShop;
+import carcassonne.view.util.GameMessage;
 
 /**
  * Class for the management of the Carcassonne game settings.
@@ -35,12 +43,12 @@ public class GameSettings {
     private static final String MEEPLE_PATH = "meeple/meeple_";
     private static final String PNG = ".png";
     private static final String TEMPLATE = "_template";
-    private static final String[] DEFAULT_NAMES = { "ONE", "TWO", "THREE", "FOUR", "FIVE" };
+    private static final String[] DEFAULT_NAMES = {"ONE", "TWO", "THREE", "FOUR", "FIVE"};
 
     // COLOR CONSTANTS:
     public static final Color UI_COLOR = new Color(190, 190, 190);
-    private static final PlayerColor[] DEFAULT_COLORS = { new PlayerColor(30, 26, 197), new PlayerColor(151, 4, 12), new PlayerColor(14, 119, 25),
-            new PlayerColor(216, 124, 0), new PlayerColor(96, 0, 147) };
+    private static final PlayerColor[] DEFAULT_COLORS = {new PlayerColor(30, 26, 197), new PlayerColor(151, 4, 12), new PlayerColor(14, 119, 25),
+            new PlayerColor(216, 124, 0), new PlayerColor(96, 0, 147)};
 
     // COSMETIC:
     private final List<PlayerColor> colors;
@@ -353,5 +361,37 @@ public class GameSettings {
      */
     public static String getMeeplePath(TerrainType type, boolean isTemplate) { // TODO (MEDIUM) [UTILS] move to image loading utility class?
         return MEEPLE_PATH + type.toString().toLowerCase(Locale.UK) + (isTemplate ? TEMPLATE : EMPTY) + PNG;
+    }
+
+    /**
+     * Saves the game settings to a file called 'settings.xml'.
+     */
+    public void saveToDisk() {
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream("settings.xml");
+            XMLEncoder encoder = new XMLEncoder(fos);
+            encoder.setExceptionListener(e -> GameMessage.showError("Could not encode settings to xml: " + e.getCause().getMessage()));
+            encoder.writeObject(this);
+        } catch (FileNotFoundException e) {
+            GameMessage.showError("Could not find file 'settings.xml'. " + e.getCause().getMessage());
+        }
+    }
+
+    /**
+     * Loads the game settings from a file called 'settings.xml'.
+     */
+    public void loadFromDisk() {
+        FileInputStream fis = null;
+        try {
+            fis = new FileInputStream("settings.xml");
+            XMLDecoder decoder = new XMLDecoder(fis);
+            GameSettings decodedSettings = (GameSettings) decoder.readObject();
+            setAllowEnclaves(decodedSettings.allowEnclaves);
+            setAllowFortifying(decodedSettings.allowFortifying);
+            setNumberOfPlayers(decodedSettings.getNumberOfPlayers());
+        } catch (FileNotFoundException e) {
+            GameMessage.showError("Could not find file 'settings.xml'. " + e.getCause().getMessage());
+        }
     }
 }
