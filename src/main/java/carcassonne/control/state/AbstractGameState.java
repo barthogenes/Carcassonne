@@ -106,9 +106,9 @@ public abstract class AbstractGameState { // TODO (HIGH) [AI] separate human mov
      */
     protected void startNewRound(int playerCount) {
         Grid newGrid = new Grid(settings.getGridWidth(), settings.getGridHeight(), settings.isAllowingEnclaves());
-        TileStack tileStack = new TileStack(settings.getTileDistribution(), settings.getStackSizeMultiplier());
-        Round newRound = new Round(playerCount, tileStack, newGrid, settings);
-        stateMachine.updateStates(newRound, tileStack, newGrid);
+        TileStack stack = new TileStack(settings.getTileDistribution(), settings.getStackSizeMultiplier());
+        Round newRound = new Round(playerCount, stack, newGrid, settings);
+        stateMachine.updateStates(newRound, stack, newGrid);
         updateScores();
         updateStackSize();
         if (settings.isGridSizeChanged()) {
@@ -121,7 +121,7 @@ public abstract class AbstractGameState { // TODO (HIGH) [AI] separate human mov
         for (int i = 0; i < round.getPlayerCount(); i++) {
             Player player = round.getPlayer(i);
             while (!player.hasFullHand()) {
-                player.addTile(tileStack.drawTile());
+                player.addTile(stack.drawTile());
             }
         }
         views.onMainView(it -> it.setCurrentPlayer(round.getActivePlayer()));
