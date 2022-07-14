@@ -4,12 +4,14 @@ import carcassonne.model.grid.GridDirection;
 import carcassonne.settings.GameSettings;
 import carcassonne.view.GlobalKeyBindingManager;
 
+import java.io.Serializable;
+
 /**
  * Facade for the game controller. Allows to call view classes or potentially external services to make requests regarding
  * the game flow.
  * @author Timur Saglam
  */
-public interface ControllerFacade {
+public interface ControllerFacade extends Serializable {
 
     /**
      * Requests to abort the round.
