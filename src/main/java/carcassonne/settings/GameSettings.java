@@ -377,15 +377,13 @@ public class GameSettings {
      * Loads the game settings from a file called 'settings.xml'.
      */
     public void loadFromDisk() {
-        FileInputStream fis = null;
-        try {
-            fis = new FileInputStream("settings.xml");
+        try (FileInputStream fis = new FileInputStream("settings.xml")) {
             XMLDecoder decoder = new XMLDecoder(fis);
             GameSettings decodedSettings = (GameSettings) decoder.readObject();
             setAllowEnclaves(decodedSettings.allowEnclaves);
             setAllowFortifying(decodedSettings.allowFortifying);
             setNumberOfPlayers(decodedSettings.getNumberOfPlayers());
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             GameMessage.showError("Could not find file 'settings.xml'. " + e.getCause().getMessage());
         }
     }
