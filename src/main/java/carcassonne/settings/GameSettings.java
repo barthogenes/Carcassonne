@@ -5,10 +5,7 @@ import java.awt.EventQueue;
 import java.beans.ExceptionListener;
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -367,13 +364,11 @@ public class GameSettings {
      * Saves the game settings to a file called 'settings.xml'.
      */
     public void saveToDisk() {
-        FileOutputStream fos = null;
-        try {
-            fos = new FileOutputStream("settings.xml");
+        try (FileOutputStream fos = new FileOutputStream("settings.xml")) {
             XMLEncoder encoder = new XMLEncoder(fos);
             encoder.setExceptionListener(e -> GameMessage.showError("Could not encode settings to xml: " + e.getCause().getMessage()));
             encoder.writeObject(this);
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             GameMessage.showError("Could not find file 'settings.xml'. " + e.getCause().getMessage());
         }
     }
