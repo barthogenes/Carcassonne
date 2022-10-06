@@ -72,8 +72,7 @@ public class GameStatisticsModel extends AbstractTableModel {
      * @param separator The separator to use.
      */
     public void exportToCsv(File file, Character separator) {
-        try {
-            FileWriter fw = new FileWriter(file);
+        try (FileWriter fw = new FileWriter(file)) {
             for (int i = 0; i < this.getColumnCount(); i++) {
                 fw.write(this.getColumnName(i) + separator);
             }
