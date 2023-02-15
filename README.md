@@ -8,16 +8,14 @@
 [![License](https://img.shields.io/github/license/tsaglam/Carcassonne?color=informational)](https://github.com/tsaglam/Carcassonne/blob/master/LICENSE)
 
 Naam: Bart Hogenes
-Studentnummer 500694053
 
-Dit open-source project (origineel is [hier](https://github.com/tsaglam/Carcassonne) te vinden) heb ik gebruikt voor het vak Testing om aan te tonen dat ik de vereiste JUnit testtechnieken kan toepassen uit het boek "Pragmatic Unit Testing in Java 8 with JUnit" van Langr, Hunt en Thomas.  
-Aan de badge boven deze tekst is te zien dat dit project voldoet aan de minimale 1000 regels code.  
-Ook is in de onderstaande screenshot te zien dat de twee geteste classes (`TileStack` en `Round`) beide voor 100% getest zijn op zowel method, line als branch niveau:
+Dit open-source project (origineel is [hier](https://github.com/tsaglam/Carcassonne) te vinden) heb ik gebruikt om aan te tonen dat ik de vereiste JUnit testtechnieken kan toepassen uit het boek "Pragmatic Unit Testing in Java 8 with JUnit" van Langr, Hunt en Thomas.   
+In de onderstaande screenshot te zien dat de twee geteste classes (`TileStack` en `Round`) beide voor 100% getest zijn op zowel method, line als branch niveau:
 ![Run all with coverage result](coverage.png)
 
-De unit tests zijn opgedeeld aan de hand van hun setup code om dubbele code tegen te gaan.  
+De unit tests zijn opgedeeld op basis van hun setup om zoveel mogelijk dubbele code te voorkomen.  
 De testmethodes zelf zijn triple-A opgebouwd.  
-Er is gedacht aan de acroniemen `FIRST`, `RIGHT` en `CORRECT` bij het maken van de unit tests om aan de 100% branch coverage te komen en om moeilijk te vinden fouten te testen.  
+Er is rekening gehouden met de acroniemen `FIRST`, `RIGHT` en `CORRECT` bij het maken van de unit tests.  
 De volgende 5 verschillende `Assert.assertXXXX` methodes zijn gebruikt:  
 - assertEquals
 - assertNotEquals
@@ -32,7 +30,7 @@ De volgende 5 verschillende Hamcrest matchers zijn gebruikt in `EmptyTileDistrib
 - not
 - describedAs
 
-De vereiste `Invariant test` is te vinden in de `tearDown` van de `EmptyTileDistributionTest`.  
+Er is een `Invariant test` te vinden in de `tearDown` van de `EmptyTileDistributionTest`.  
 Er wordt ook getest op `forced errors` voor zover ik die heb kunnen vinden.
 
 ### Over dit project
