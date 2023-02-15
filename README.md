@@ -9,7 +9,7 @@
 
 Naam: Bart Hogenes
 
-Dit open-source project (origineel is [hier](https://github.com/tsaglam/Carcassonne) te vinden) heb ik gebruikt om aan te tonen dat ik de vereiste JUnit testtechnieken kan toepassen uit het boek "Pragmatic Unit Testing in Java 8 with JUnit" van Langr, Hunt en Thomas.   
+Dit project heb ik gebruikt om aan te tonen dat ik de JUnit testtechnieken kan toepassen uit het boek "Pragmatic Unit Testing in Java 8 with JUnit" van Langr, Hunt en Thomas.   
 In de onderstaande screenshot te zien dat de twee geteste classes (`TileStack` en `Round`) beide voor 100% getest zijn op zowel method, line als branch niveau:
 ![Run all with coverage result](coverage.png)
 
