@@ -3,15 +3,17 @@
 </p>
 
 [![CI status](https://github.com/tsaglam/Carcassonne/actions/workflows/CI.yml/badge.svg)](https://github.com/tsaglam/Carcassonne/actions)
-[![GitHub commit activity](https://img.shields.io/github/commit-activity/y/tsaglam/Carcassonne)](https://github.com/tsaglam/Carcassonne/pulse)
-[![Lines of code](https://img.shields.io/tokei/lines/github/tsaglam/Carcassonne)](https://github.com/tsaglam/Carcassonne/graphs/contributors)
 [![License](https://img.shields.io/github/license/tsaglam/Carcassonne?color=informational)](https://github.com/tsaglam/Carcassonne/blob/master/LICENSE)
 
-Naam: Bart Hogenes
+Contributor: Bart Hogenes
 
-Dit project heb ik gebruikt om aan te tonen dat ik de JUnit testtechnieken kan toepassen uit het boek "Pragmatic Unit Testing in Java 8 with JUnit" van Langr, Hunt en Thomas.   
-In de onderstaande screenshot te zien dat de twee geteste classes (`TileStack` en `Round`) beide voor 100% getest zijn op zowel method, line als branch niveau:
-![Run all with coverage result](coverage.png)
+I used this project to apply the methodologies I learned from ["Pragmatic Unit Testing in Java 8 with JUnit"](https://pragprog.com/titles/utj2/pragmatic-unit-testing-in-java-8-with-junit).  
+In the screenshot in this spoiler the classes `TileStack` en `Round` both have 100% coverage on method, line and branch level:
+<details>
+  <summary>Spoiler warning</summary>
+  <img src="coverage.png">Run all with coverage result
+</details>
+
 
 De unit tests zijn opgedeeld op basis van hun setup om zoveel mogelijk dubbele code te voorkomen.  
 De testmethodes zelf zijn triple-A opgebouwd.  
